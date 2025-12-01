@@ -1,10 +1,17 @@
-// import './App.css';
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { ProductListing } from "./pages/ProductListing";
+import { Navbar } from "./component/Navbar/Navbar";
 function App() {
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <BrowserRouter>
+    <Navbar/>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/products' element={<ProductListing />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
