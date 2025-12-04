@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import {SearchIcon,PersonOutlineOutlinedIcon,FavoriteBorderOutlinedIcon,ShoppingBagOutlinedIcon,AccountBalanceIcon} from "../../assets"
+import {SearchIcon,PersonOutlineOutlinedIcon,FavoriteBorderOutlinedIcon,ShoppingBagOutlinedIcon} from "../../assets"
 import "../navbar/nabar.css"
 
 const Navbar = () => {
@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className="nav-container">
         <div className="nav-left">
           <span className="nav-logo" onClick={() => navigate("/")}>
-            AttireX<AccountBalanceIcon/>
+            AttireX
           </span>
           <ul className="nav-menu">
             <li>
