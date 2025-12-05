@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className="nav-container">
         <div className="nav-left">
           <span className="nav-logo" onClick={() => navigate("/")}>
-            AttireX
+            MERCATOX
           </span>
           <ul className="nav-menu">
             <li>

@@ -22,14 +22,16 @@ nav {
 }
 
 .nav-logo {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--deep-blue);
   text-transform: uppercase;
   text-decoration: none;
   margin-right: 1.25rem;
 }
-
+span.nav-logo{
+  margin-bottom: 8px;
+}
 .nav-menu {
   display: flex;
   list-style: none;
