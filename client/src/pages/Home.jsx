@@ -1,9 +1,11 @@
 import { Carousel } from "../component/carousel/Carousel";
+import { Categories } from "../component/categories/Categories";
 
 export const Home = () => {
   return (
     <div>
       <Carousel/>
+      <Categories/>
     </div>
   );
 };
