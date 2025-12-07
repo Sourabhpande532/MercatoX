@@ -4,6 +4,7 @@ import { Home } from "./pages/Home";
 import { ProductListing } from "./pages/ProductListing";
 import { Navbar } from "./component/navbar/Navbar";
 import { AppProvider } from "./context/AppContext";
+import "./App.css"
 function App() {
   return (
     <AppProvider>

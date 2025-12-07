@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../carousel/carousel.css";
-export const Carousel = () => {
+const Carousel = () => {
   return (
     <section className='carousel'>
       <div className='banner'>
@@ -15,3 +15,5 @@ export const Carousel = () => {
     </section>
   );
 };
+
+export {Carousel}

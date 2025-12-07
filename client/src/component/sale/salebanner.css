@@ -1,0 +1,57 @@
+:root {
+  --deep-blue: #121932;
+  --light-blue: #4e5f86;
+  --white: #fff;
+}
+.sale {
+  cursor: pointer;
+}
+.sale-title h2 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-top: 2.5rem;
+  color: var(--deep-blue);
+}
+
+.sale-block-note {
+  font-style: italic;
+  color: var(--light-blue);
+  font-size: 1.2rem;
+  letter-spacing: 0.05rem;
+  text-align: center;
+}
+.sale-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.2rem;
+  justify-items: center;
+  align-items: center;
+  margin-top: 0.6rem;
+}
+
+.sale-image-grid img {
+  height: auto;
+  max-height: 10rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .sale {
+    margin: 0.5rem 3rem;
+  }
+  .sale-title h2 {
+    font-size: 1.5rem;
+    margin-top: 1.875rem;
+  }
+  .sale-block-note {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .sale {
+    margin: 3.125rem 6.25rem 0rem 6.25rem;
+  }
+}

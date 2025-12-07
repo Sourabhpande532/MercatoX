@@ -1,0 +1,8 @@
+.clothing-categories{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.category img {
+    width: 100%;
+}

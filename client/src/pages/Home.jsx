@@ -1,11 +1,14 @@
-import { Carousel } from "../component/carousel/Carousel";
-import { Categories } from "../component/categories/Categories";
+import {
+  Carousel,Categories,SalesBanner,ClothingCategory,
+} from "../../src/component";
 
 export const Home = () => {
   return (
     <div>
-      <Carousel/>
-      <Categories/>
+      <Carousel />
+      <Categories />
+      <SalesBanner />
+      <ClothingCategory />
     </div>
   );
 };
