@@ -18,7 +18,7 @@ export const Categories = () => {
             src='https://res.cloudinary.com/dptfwcnro/image/upload/v1683872441/E-comm%20ATTIREX/Mens-Category_zjicre.webp'
             alt='Mens Category'
           />
-          <div className='category-overplay'>
+          <div className='category-overlay'>
             <h3>Mens</h3>
             <Link to='/products'>Shop Now</Link>
           </div>
