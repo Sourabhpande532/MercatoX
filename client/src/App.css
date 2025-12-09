@@ -14,7 +14,7 @@
   -webkit-tap-highlight-color: transparent;
   -moz-tap-highlight-color: transparent;
   -ms-tap-highlight-color: transparent;
-  tap-highlight-color: transparent;
+  scrollbar-3dlight-color: transparent;
 }
 :root {
   --deep-blue: #121932;
