@@ -66,7 +66,7 @@ const ClothingCategory = () => {
         <div className='category'>
           <img
             src='https://res.cloudinary.com/dptfwcnro/image/upload/v1683911646/E-comm%20ATTIREX/Formal_hmsktj.jpg'
-            alt='Formal'
+            alt='Formal' style={{width:"100%"}}
           />
           <div className='overlay category-small'>
             <div className='text'>Formal</div>
