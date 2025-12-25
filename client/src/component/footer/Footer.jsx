@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../footer/footer.css";
 import {
   GitHubIcon,
   LinkedInIcon,
@@ -8,7 +9,7 @@ import {
 const Footer = () => {
   return (
     <>
-      <footer>
+      <footer className='desk-footer'>
         <div className='footer-content'>
           <div className='footer-section about'>
             <h2 className='footer-heading'>About Us</h2>
