@@ -4,7 +4,8 @@ import { Home } from "./pages/Home";
 import { ProductListing } from "./pages/ProductListing";
 import { Navbar } from "./component/navbar/Navbar";
 import { AppProvider } from "./context/AppContext";
-import "./App.css"
+import "./App.css";
+import { Footer } from "./component/footer/Footer";
 function App() {
   return (
     <AppProvider>
@@ -14,6 +15,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<ProductListing />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </AppProvider>
   );

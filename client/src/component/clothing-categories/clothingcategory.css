@@ -61,13 +61,15 @@
   transition: 0.5s ease;
 }
 
-.category:hover .overlay{
+.category:hover .overlay {
   height: 100%;
 }
+
 .category-small {
   height: 40%;
 }
-.category-long{
+
+.category-long {
   height: 12.6%;
 }
 
@@ -101,11 +103,44 @@
   left: 50%;
   transform: translateX(-50%);
 }
-.button:hover{
+
+.button:hover {
   background-color: var(--deep-blue);
   color: var(--white);
 }
 
-/* 
+@media only screen and (min-width: 100px) and (max-width: 500px) {
+  .button {
+    padding: 0.4rem 0.3rem;
+    font-size: 0.5rem;
+  }
+}
+/* Media query for tablets */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .overlay {
+    height: 0%;
+  }
+}
+/* Media query for mobile */
 
- */
+@media only screen and (max-width: 767px) {
+  .categories-title h2 {
+    font-size: 1.5rem;
+    margin-top: 1.875rem;
+  }
+
+  .category-block-note {
+    font-size: 0.9rem;
+  }
+  .clothing-categories-container {
+    margin: 0.5rem 2rem;
+  }
+  .clothing-categories {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, auto);
+    margin-top: 0.625rem;
+  }
+  .overlay {
+    height: 0%;
+  }
+}

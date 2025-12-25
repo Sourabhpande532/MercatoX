@@ -3,5 +3,12 @@ export {
   PersonOutlineOutlinedIcon,
   FavoriteBorderOutlinedIcon,
   ShoppingBagOutlinedIcon,
-  AccountBalanceIcon
+  AccountBalanceIcon,
+  GitHubIcon,
+  TwitterIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  CreateIcon,
+  Person2SharpIcon
+
 } from "./icons/materialIcons";
