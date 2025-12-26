@@ -39,6 +39,14 @@
   grid-column: 3 / span 1;
 }
 
+.category:nth-child(9) {
+  grid-row: 1 / span 3;
+}
+
+.category:nth-child(10) {
+  grid-row: 1 / span 2;
+}
+
 .category {
   position: relative;
 }
@@ -115,12 +123,14 @@
     font-size: 0.5rem;
   }
 }
+
 /* Media query for tablets */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .overlay {
     height: 0%;
   }
 }
+
 /* Media query for mobile */
 
 @media only screen and (max-width: 767px) {
@@ -132,14 +142,17 @@
   .category-block-note {
     font-size: 0.9rem;
   }
+
   .clothing-categories-container {
     margin: 0.5rem 2rem;
   }
+
   .clothing-categories {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(1, auto);
     margin-top: 0.625rem;
   }
+
   .overlay {
     height: 0%;
   }

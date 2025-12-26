@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
-import "../clothing-categories/clothingcategory.css"
+import "../clothing-categories/clothingcategory.css";
+import { useAppFeatures } from "../../context/AppContext";
 const ClothingCategory = () => {
+  const { categories, loading } = useAppFeatures();
+  console.log(categories);
+
+  if (loading) return <p>Loading...</p>;
   return (
     <div className='clothing-categories-container'>
       <div className='categories-title'>
@@ -11,109 +16,21 @@ const ClothingCategory = () => {
       </div>
       <div className='clothing-categories'>
         {/* 1st */}
-        <div className='category'>
-          <img
-            src='https://res.cloudinary.com/dptfwcnro/image/upload/v1683911285/E-comm%20ATTIREX/ActiveWear_j3uzrc.jpg'
-            alt='Activewear'
-          />
-          <div className='overlay'>
-            <div className='text'>Activewear</div>
-            <Link to='/products' className='button'>
-              Shop Now
-            </Link>
-          </div>
-        </div>
-        {/* 2*/}
-        <div className='category'>
-          <img
-            src='https://res.cloudinary.com/dptfwcnro/image/upload/v1683911465/E-comm%20ATTIREX/WesternDress_xzucw4.jpg'
-            alt='Dress'
-          />
-          <div className='overlay category-long'>
-            <div className='text'>Dresses</div>
-            <Link to='/products' className='button'>
-              Shop Now
-            </Link>
-          </div>
-        </div>
-        {/* 3*/}
-        <div className='category'>
-          <img
-            src='https://res.cloudinary.com/dptfwcnro/image/upload/v1683911560/E-comm%20ATTIREX/Office-Wear_o9xrse.jpg'
-            alt='Office-Wear'
-          />
-          <div className='overlay'>
-            <div className='text'>Office Wear</div>
-            <Link to='/products' className='button'>
-              Shop Now
-            </Link>
-          </div>
-        </div>{" "}
-        {/* 4*/}
-        <div className='category'>
-          <img
-            src='https://res.cloudinary.com/dptfwcnro/image/upload/v1683911604/E-comm%20ATTIREX/Freestyle_suh2kw.jpg'
-            alt='FreeStyle'
-          />
-          <div className='overlay'>
-            <div className='text'> Freestyle </div>
-            <Link to='/products' className='button'>
-              Shop Now
-            </Link>
-          </div>
-        </div>{" "}
-        {/* 5*/}
-        <div className='category'>
-          <img
-            src='https://res.cloudinary.com/dptfwcnro/image/upload/v1683911646/E-comm%20ATTIREX/Formal_hmsktj.jpg'
-            alt='Formal' style={{width:"100%"}}
-          />
-          <div className='overlay category-small'>
-            <div className='text'>Formal</div>
-            <Link to='/products' className='button'>
-              Shop Now
-            </Link>
-          </div>
-        </div>{" "}
-        {/* 6 */}
-        <div className='category'>
-          <img
-            src='https://res.cloudinary.com/dptfwcnro/image/upload/v1683911724/E-comm%20ATTIREX/FreestyleWomen_jmmd32.jpg'
-            alt='Freestyle'
-          />
-          <div className='overlay category-small'>
-            <div className='text'>Freestyle </div>
-            <Link to='/products' className='button'>
-              Shop Now
-            </Link>
-          </div>
-        </div>{" "}
-        {/* 7 */}
-        <div className='category'>
-          <img
-            src='https://res.cloudinary.com/dptfwcnro/image/upload/v1683911766/E-comm%20ATTIREX/CasualMen_hekinb.jpg'
-            alt='Casual'
-          />
-          <div className='overlay category-small'>
-            <div className='text'>Casual</div>
-            <Link to='/products' className='button'>
-              Shop Now
-            </Link>
-          </div>
-        </div>
-        {/* 8 */}
-        <div className='category'>
-          <img
-            src='https://res.cloudinary.com/dptfwcnro/image/upload/v1683911811/E-comm%20ATTIREX/Tops_fiapqb.jpg'
-            alt='Tops'
-          />
-          <div className='overlay category-small'>
-            <div className='text'>Tops</div>
-            <Link to='/products' className='button'>
-              Shop Now
-            </Link>
-          </div>
-        </div>
+        {Array.isArray(categories) && categories.length > 0 ? (
+          categories.map((category) => (
+            <div key={category._id} className='category'>
+              <img src={category.image} alt={category.name} />
+              <div className='overlay'>
+                <div className='text'>{category.name}</div>
+                <Link to='/products' className='button'>
+                  Shop Now
+                </Link>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className='text-center'>Categories not found.</p>
+        )}
       </div>
     </div>
   );
