@@ -22,7 +22,9 @@ const ClothingCategory = () => {
               <img src={category.image} alt={category.name} />
               <div className='overlay'>
                 <div className='text'>{category.name}</div>
-                <Link to='/products' className='button'>
+                <Link
+                  to={`/products?category=${category._id}`}
+                  className='button'>
                   Shop Now
                 </Link>
               </div>
