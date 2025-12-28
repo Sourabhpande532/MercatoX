@@ -3,8 +3,6 @@ import "../clothing-categories/clothingcategory.css";
 import { useAppFeatures } from "../../context/AppContext";
 const ClothingCategory = () => {
   const { categories, loading } = useAppFeatures();
-  console.log(categories);
-
   if (loading) return <p>Loading...</p>;
   return (
     <div className='clothing-categories-container'>

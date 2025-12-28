@@ -5,14 +5,19 @@ const { createContext, useContext, useState, useEffect } = require("react");
 const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function load() {
       setLoading(true);
       try {
-        const [cRes] = await Promise.all([apiGet("/categories")]);
+        const [cRes, pRes] = await Promise.all([
+          apiGet("/categories"),
+          apiGet("/products"),
+        ]);
         setCategories(cRes.categories || []);
+        setProducts(pRes.products || []);
       } catch (error) {
         console.error(error);
       }
@@ -22,11 +27,11 @@ const AppProvider = ({ children }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ categories, loading }}>
+    <AppContext.Provider value={{ products, categories, loading }}>
       {children}
     </AppContext.Provider>
   );
 };
 
 const useAppFeatures = () => useContext(AppContext);
-export { useAppFeatures, AppProvider };
+export { useAppFeatures, AppProvider,AppContext };
