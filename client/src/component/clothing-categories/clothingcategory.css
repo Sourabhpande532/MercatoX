@@ -39,14 +39,6 @@
   grid-column: 3 / span 1;
 }
 
-.category:nth-child(9) {
-  grid-row: 1 / span 3;
-}
-
-.category:nth-child(10) {
-  grid-row: 1 / span 2;
-}
-
 .category {
   position: relative;
 }
@@ -128,6 +120,16 @@
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .overlay {
     height: 0%;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .category:nth-child(9) {
+    grid-row: 1 / span 3;
+  }
+
+  .category:nth-child(10) {
+    grid-row: 1 / span 2;
   }
 }
 

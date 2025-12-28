@@ -11,8 +11,9 @@ const options = {
 app.use(express.json());
 app.use(cors(options));
 
-// Routes 
-app.use("/api/categories", require('./routes/categories'));
+// Routes
+app.use("/api/categories", require("./routes/categories"));
+app.use("/api/products", require("./routes/product"));
 
 app.get("/", (req, res) => {
   res.send("Hello, Welcome express routes");
