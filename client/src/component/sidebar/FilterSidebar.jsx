@@ -1,12 +1,40 @@
+import { useAppFeatures } from "../../context/AppContext";
 import "../sidebar/filter.css";
-const FilterSidebar = ({ price, setPrice, rating, setRating }) => {
+const FilterSidebar = ({
+  price,
+  setPrice,
+  rating,
+  setRating,
+  sortByRating,
+  setSortByRating,
+  sort,
+  setSort,
+  selectedCategory,
+  setSelectedCategory,
+  clearAll,
+}) => {
+  const { categories } = useAppFeatures();
+  const toggleHandleCategory = (id) => {
+    const isSelected = selectedCategory.includes(id);
+    if (isSelected) {
+      const makeUnchecked = selectedCategory.filter(
+        (category) => category !== id
+      );
+      setSelectedCategory(makeUnchecked);
+    } else {
+      const makeChecked = [...selectedCategory, id];
+      setSelectedCategory(makeChecked);
+    }
+  };
   return (
     <div>
       <main className='border-end px-4'>
         <div className='d-flex justify-content-between align-items-center'>
           <h5 className='fw-bold'>Filters</h5>
           <div>
-            <button className='btn btn-sm btn-outline-secondary mt-3 p-0'>
+            <button
+              onClick={clearAll}
+              className='btn btn-sm btn-outline-secondary mt-3 p-0'>
               Clear
             </button>
           </div>
@@ -31,12 +59,20 @@ const FilterSidebar = ({ price, setPrice, rating, setRating }) => {
           <h4>
             <strong>Categories</strong>
           </h4>
-          <div className='form-check'>
-            <input type='checkbox' id='category' className='form-check-input' />
-            <label className='form-check-label' htmlFor='category'>
-              Category +
-            </label>
-          </div>
+          {categories.map((category) => (
+            <div key={category._id} className='form-check'>
+              <input
+                type='checkbox'
+                id={category._id}
+                className='form-check-input'
+                checked={selectedCategory.includes(category._id)}
+                onChange={() => toggleHandleCategory(category._id)}
+              />
+              <label className='form-check-label' htmlFor={category._id}>
+                {category.name}
+              </label>
+            </div>
+          ))}
         </div>
         <div className='sidebar-rating mt-3'>
           <h3>
@@ -55,13 +91,15 @@ const FilterSidebar = ({ price, setPrice, rating, setRating }) => {
 
         <div className='mt-4'>
           <h4>
-            <strong>Rating +</strong>
+            <strong>Rating</strong>
           </h4>
           <div className='form-check'>
             <input
               type='radio'
               name='rating'
               className='form-check-input'
+              checked={sortByRating === 4}
+              onChange={() => setSortByRating(4)}
               id='filterByFour'
             />
             <label className='form-check-label' htmlFor='filterByFour'>
@@ -73,6 +111,8 @@ const FilterSidebar = ({ price, setPrice, rating, setRating }) => {
               type='radio'
               name='rating'
               className='form-check-input'
+              checked={sortByRating === 3}
+              onChange={() => setSortByRating(3)}
               id='filterByThree'
             />
             <label className='form-check-label' htmlFor='filterByThree'>
@@ -90,6 +130,8 @@ const FilterSidebar = ({ price, setPrice, rating, setRating }) => {
               id='low'
               className='form-check-input'
               name='sort'
+              checked={sort === "low"}
+              onChange={() => setSort("low")}
             />
             <label className='form-check-label' htmlFor='low'>
               Price - Low to High
@@ -101,6 +143,8 @@ const FilterSidebar = ({ price, setPrice, rating, setRating }) => {
               className='form-check-input'
               id='high'
               name='sort'
+              checked={sort === "high"}
+              onChange={() => setSort("high")}
             />
             <label className='form-check-label' htmlFor='high'>
               Price - High to Low

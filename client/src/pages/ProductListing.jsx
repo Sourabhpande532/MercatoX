@@ -10,6 +10,8 @@ export const ProductListing = () => {
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [price, setPrice] = useState(300);
   const [rating, setRating] = useState(0);
+  const [sortByRating, setSortByRating] = useState("");
+  const [sort, setSort] = useState("");
   const query = useQuery();
 
   useEffect(() => {
@@ -27,8 +29,20 @@ export const ProductListing = () => {
     if (price) response = response.filter((product) => product.price > price);
     if (rating)
       response = response.filter((product) => product.rating >= rating);
+    if (sortByRating)
+      response = response.filter((product) => product.rating > sortByRating);
+    if (sort === "low") response.sort((a, b) => a.price - b.price);
+    if (sort === "high") response.sort((a, b) => b.price - a.price);
     setFiltered(response);
-  }, [products, selectedCategory, price, rating]);
+  }, [products, selectedCategory, price, rating, sortByRating, sort]);
+
+  const clearAll = () => {
+    setSelectedCategory([query.get("category")]);
+    setRating(0);
+    setSort("");
+    setPrice(300);
+    setSortByRating("");
+  };
 
   if (loading) return <h2 className='text-center'>Loading...</h2>;
   return (
@@ -39,6 +53,13 @@ export const ProductListing = () => {
           setPrice={setPrice}
           rating={rating}
           setRating={setRating}
+          sortByRating={sortByRating}
+          setSortByRating={setSortByRating}
+          sort={sort}
+          setSort={setSort}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          clearAll={clearAll}
         />
       </div>
       <div className='col-md-9'>
