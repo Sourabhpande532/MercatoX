@@ -1,25 +1,31 @@
 import "../sidebar/filter.css";
-const FilterSidebar = () => {
+const FilterSidebar = ({ price, setPrice, rating, setRating }) => {
   return (
     <div>
-      <main>
-        <div>
-          <h2>Filters</h2>
+      <main className='border-end px-4'>
+        <div className='d-flex justify-content-between align-items-center'>
+          <h5 className='fw-bold'>Filters</h5>
           <div>
-            <button>Clear</button>
+            <button className='btn btn-sm btn-outline-secondary mt-3 p-0'>
+              Clear
+            </button>
           </div>
         </div>
-        <div className='sidebar-price'>
+
+        <div className='sidebar-price mt-3'>
           <h3>
             <strong>Price</strong>
           </h3>
           <input
             type='range'
             min='300'
-            max='3000'
+            max='4000'
             step='300'
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
             className='form-range'
           />
+          <p>Up to ₹{price}</p>
         </div>
         <div>
           <h4>
@@ -32,15 +38,17 @@ const FilterSidebar = () => {
             </label>
           </div>
         </div>
-        <div className='sidebar-rating'>
+        <div className='sidebar-rating mt-3'>
           <h3>
-            <strong>Rating 0+</strong>
+            <strong>Rating {rating}+</strong>
           </h3>
           <input
             type='range'
             min='0'
             max='5'
             step='0.5'
+            value={rating}
+            onChange={(e) => setRating(Number(e.target.value))}
             className='form-range'
           />
         </div>
