@@ -6,6 +6,7 @@ import { Navbar } from "./component/navbar/Navbar";
 import { AppProvider } from "./context/AppContext";
 import "./App.css";
 import { Footer } from "./component/footer/Footer";
+import { ProductDetails } from "./component/productDetails/ProductDetails";
 function App() {
   return (
     <AppProvider>
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<ProductListing />} />
+          <Route path='/products/:id' element={<ProductDetails />} />
         </Routes>
         <Footer />
       </BrowserRouter>

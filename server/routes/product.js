@@ -47,7 +47,9 @@ app.get("/", async (req, res) => {
 
 app.get("/:productId", async (req, res) => {
   try {
-    const product = await Product.findById(req.params.productId);
+    const product = await Product.findById(req.params.productId).populate(
+      "category"
+    );
     if (!product)
       return res
         .status(404)

@@ -33,7 +33,7 @@ const FilterSidebar = ({
           <h5 className='fw-bold'>Filters</h5>
           <div>
             <button
-              onClick={clearAll}
+              onClick={() => clearAll()}
               className='btn btn-sm btn-outline-secondary mt-3 p-0'>
               Clear
             </button>

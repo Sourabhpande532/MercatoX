@@ -45,7 +45,7 @@
   color: var(--light-blue);
 }
 
-.btn {
+/* .btn {
   background-color: var(--deep-blue);
   color: var(--white);
   padding: 0.6rem 1.25rem;
@@ -61,7 +61,7 @@
   color: var(--deep-blue);
   border: 0.06rem solid var(--deep-blue);
   transform: scale(1.1);
-}
+} */
 
 @media (max-width: 768px) {
   .banner {

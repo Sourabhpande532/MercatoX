@@ -37,7 +37,6 @@ export const ProductListing = () => {
   }, [products, selectedCategory, price, rating, sortByRating, sort]);
 
   const clearAll = () => {
-    setSelectedCategory([query.get("category")]);
     setRating(0);
     setSort("");
     setPrice(300);

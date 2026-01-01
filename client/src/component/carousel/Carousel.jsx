@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../carousel/carousel.css";
+import "./carousel.css";
 const Carousel = () => {
   return (
     <section className='carousel'>
