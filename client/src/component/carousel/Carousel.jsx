@@ -7,7 +7,7 @@ const Carousel = () => {
         <div className='banner-text'>
           <h2>Get 20% off on your first order!</h2>
           <p>Find your perfect shopping experience at MERCATOX</p>
-          <Link to='/products' className='btn'>
+          <Link to='/products' className='btns'>
             Shop Now
           </Link>
         </div>

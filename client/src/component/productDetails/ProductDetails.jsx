@@ -26,15 +26,16 @@ const ProductDetails = () => {
     <div className='container py-4'>
       <div className='row'>
         <div className='col-md-6'>
-          <div className='card'>
+          <div className=''>
             <img
               src={product.images?.[0] || "https://placehold.co/200"}
               className='card-img-top'
-              style={{ objectFit: "cover", height: "100%" }}
+              style={{ objectFit: "cover" }}
               alt={product.title}
             />
           </div>
         </div>
+
         <div className='col-md-6'>
           <h2 className='fw-bold'>
             <strong>{product.title}</strong>
@@ -108,6 +109,16 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className='mt-4'>
+        <h5 className='fw-bold'>Description</h5>
+        <ul>
+          {product.description
+            ?.split(".")
+            .map((line, idx) =>
+              line.trim() ? <li key={idx}>{line.trim()}</li> : null
+            )}
+        </ul>
       </div>
     </div>
   );

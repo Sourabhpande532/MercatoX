@@ -18,7 +18,7 @@
   letter-spacing: 0.05rem;
   text-align: center;
 }
-.container {
+.containers {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1.2rem;

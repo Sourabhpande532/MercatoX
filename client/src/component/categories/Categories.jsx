@@ -10,7 +10,7 @@ const Categories = () => {
       <p class='categories-block-note'>
         We find the best suppliers and makers of fashion and fancy products.
       </p>
-      <div className='container'>
+      <div className='containers'>
         <div className='big-box'>
           <img
             src='https://res.cloudinary.com/dptfwcnro/image/upload/v1683872441/E-comm%20ATTIREX/Mens-Category_zjicre.webp'
