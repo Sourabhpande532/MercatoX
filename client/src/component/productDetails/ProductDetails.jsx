@@ -128,19 +128,28 @@ const ProductDetails = () => {
         </ul>
       </div>
 
-      <div className="py-4">
-        <h5 className="fw-bold mb-3">More items you may like</h5>
-        <div className="row">
-          {filterProduct.map((each)=>(
-            <div className="col-md-3 col-6 mb-4">
-             <div className="card">
-              <img src={each.images?.[0]} className="img-fluid"/>
-              <div className="card-body">
-               <h6>{each.title}</h6>
-               <p>${each.price}</p>
-               <button className="btn btn-outline-dark">Add to cart</button>
+      <div className='py-4'>
+        <h5 className='fw-bold mb-3'>More items you may like</h5>
+        <div className='row'>
+          {filterProduct.map((each) => (
+            <div key={each._id} className='col-md-3 col-6 mb-4'>
+              <div className='card h-100'>
+                <img
+                  src={each.images?.[0]}
+                  className='card-img-top'
+                  style={{ height: 200, objectFit: "cover" }}
+                  alt={each.title}
+                />
+                <div className='card-body text-center d-flex flex-column'>
+                  <h6 className='fw-bold' style={{ fontSize: 14 }}>
+                    {each.title}
+                  </h6>
+                  <p>${each.price}</p>
+                  <button className='btn btn-sm btn-dark mt-auto'>
+                    Add to cart
+                  </button>
+                </div>
               </div>
-             </div>
             </div>
           ))}
         </div>
