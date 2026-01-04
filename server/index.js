@@ -14,6 +14,7 @@ app.use(cors(options));
 // Routes
 app.use("/api/categories", require("./routes/categories"));
 app.use("/api/products", require("./routes/product"));
+app.use("/api/cart", require("./routes/cart"));
 
 app.get("/", (req, res) => {
   res.send("Hello, Welcome express routes");
