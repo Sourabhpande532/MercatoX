@@ -42,12 +42,8 @@ const getDetailsOfCart = async (payload) => {
 app.post("/", async (req, res) => {
   try {
     const payload = req.body;
-    const {
-      userId = "default",
-      product: productId,
-      qty = 1,
-      size = "",
-    } = payload;
+    // FRONTEND
+    const { userId = "default", productId, qty = 1, size = "" } = payload;
 
     if (!productId) {
       return res.status(400).json({

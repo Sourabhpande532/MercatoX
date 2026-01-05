@@ -3,13 +3,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { ProductListing } from "./pages/ProductListing";
 import { Navbar } from "./component/navbar/Navbar";
-import { AppProvider } from "./context/AppContext";
 import "./App.css";
 import { Footer } from "./component/footer/Footer";
 import { ProductDetails } from "./component/productDetails/ProductDetails";
 function App() {
   return (
-    <AppProvider>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -19,7 +17,6 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </AppProvider>
   );
 }
 

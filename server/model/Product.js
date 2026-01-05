@@ -7,6 +7,7 @@ const ProductSchema = new mongoose.Schema({
   discount: { type: Number, default: 0 },
   offPrice: Number,
   sizes: { type: [String] },
+  size: { type: String },
   deliveryCharge: { type: Number, default: 0 },
   description: { type: String },
   category: {
