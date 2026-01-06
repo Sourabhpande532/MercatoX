@@ -1,5 +1,8 @@
 import {
-  Carousel,Categories,SalesBanner,ClothingCategory,
+  Carousel,
+  Categories,
+  SalesBanner,
+  ClothingCategory,
 } from "../../src/component";
 
 export const Home = () => {
@@ -12,16 +15,3 @@ export const Home = () => {
     </div>
   );
 };
-// import { useEffect } from "react";
-// import { apiGet } from "../api/axios";
-// const fetchCategories = async () => {
-//   try {
-//     const res = await apiGet("/categories");
-//     console.log(res.categories);
-//   } catch (error) {
-//     throw error;
-//   }
-// };
-// useEffect(() => {
-//   fetchCategories();
-// }, []);

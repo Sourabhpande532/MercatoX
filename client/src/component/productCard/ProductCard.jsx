@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import "../../component/productCard/product.css";
-const ProductCard = ({ product: { _id, title, price, rating, images } }) => {
+import { useCart } from "../../context/CartContext";
+const ProductCard = ({
+  product: { _id, title, price, rating, images, countInStock, sizes, size },
+}) => {
+  const { addToCart } = useCart();
   const navigate = useNavigate();
   return (
     <main>
@@ -21,7 +25,11 @@ const ProductCard = ({ product: { _id, title, price, rating, images } }) => {
           <p className='mb-1'>Price: {price}</p>
           <p className='mb-2'>Rating: {rating}</p>
           <div className='mt-auto d-flex gap-2'>
-            <button className='btn btn-primary btn-sm'>Add To cart</button>
+            <button
+              className='btn btn-primary btn-sm'
+              onClick={() => addToCart(_id, countInStock, sizes[3])}>
+              Add To cart
+            </button>
             <button className='btn btn-outline-secondary btn-sm'>
               Wishlist
             </button>

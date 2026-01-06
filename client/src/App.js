@@ -6,17 +6,19 @@ import { Navbar } from "./component/navbar/Navbar";
 import "./App.css";
 import { Footer } from "./component/footer/Footer";
 import { ProductDetails } from "./component/productDetails/ProductDetails";
+import { Cart } from "./pages/Cart";
 function App() {
   return (
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/products' element={<ProductListing />} />
-          <Route path='/products/:id' element={<ProductDetails />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/products' element={<ProductListing />} />
+        <Route path='/products/:id' element={<ProductDetails />} />
+        <Route path='/cart' element={<Cart />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

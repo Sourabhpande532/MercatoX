@@ -4,9 +4,7 @@ import API_URL from "../../api/axios";
 import { useEffect, useState } from "react";
 
 const ProductDetails = () => {
-  const { products, loading } = useAppFeatures();
-  console.log(products);
-
+  const { products } = useAppFeatures();
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   console.log(product);
@@ -14,8 +12,6 @@ const ProductDetails = () => {
   const filterProduct = products.filter((each) =>
     each?.category?._id.includes(product.category?._id)
   );
-  console.log(filterProduct);
-
   useEffect(() => {
     async function fetchProductData() {
       const productResponse = await API_URL.get(`/products/${id}`);
