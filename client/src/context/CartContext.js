@@ -5,8 +5,14 @@ const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  console.log(cart.length);
-  
+  const [alert, setAlert] = useState([]);
+  console.log(alert);
+
+  const pushAlert = (message) => {
+    setAlert((prev) => [...prev, message]);
+    setTimeout(() => setAlert((prev) => prev.slice(1)), 3500);
+  };
+
   const fetchCart = async () => {
     try {
       const response = await API_URL.get("/cart");
@@ -24,8 +30,10 @@ const CartProvider = ({ children }) => {
         size,
       });
       setCart(res.data.data.cart || []);
+      pushAlert({ type: "Success", text: "Add to cart" });
     } catch (error) {
       console.error(error);
+      pushAlert({ type: "error", text: "Failed to add to cart" });
     }
   };
   useEffect(() => {

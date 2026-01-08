@@ -3,6 +3,7 @@ import { AppContext } from "../context/AppContext";
 import { FilterSidebar } from "../component/sidebar/FilterSidebar";
 import { ProductCard } from "../component/productCard/ProductCard";
 import { useQuery } from "../hooks/useQuery";
+import { Loading } from "../component/loading/Loading";
 
 export const ProductListing = () => {
   const { products, loading } = useContext(AppContext);
@@ -43,7 +44,12 @@ export const ProductListing = () => {
     setSortByRating("");
   };
 
-  if (loading) return <h2 className='text-center'>Loading...</h2>;
+  if (loading)
+    return (
+      <h2 className=''>
+        <Loading />
+      </h2>
+    );
   return (
     <div className='row'>
       <div className='col-md-3'>

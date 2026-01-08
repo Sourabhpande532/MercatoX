@@ -7,16 +7,24 @@ import "./App.css";
 import { Footer } from "./component/footer/Footer";
 import { ProductDetails } from "./component/productDetails/ProductDetails";
 import { Cart } from "./pages/Cart";
+import { useAppFeatures } from "./context/AppContext";
+import { Loading } from "./component/loading/Loading";
 function App() {
+  const { loading } = useAppFeatures();
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/products' element={<ProductListing />} />
-        <Route path='/products/:id' element={<ProductDetails />} />
-        <Route path='/cart' element={<Cart />} />
-      </Routes>
+      {loading ? (
+        <Loading />
+      ) : (
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/products' element={<ProductListing />} />
+          <Route path='/products/:id' element={<ProductDetails />} />
+          <Route path='/cart' element={<Cart />} />
+        </Routes>
+      )}
+
       <Footer />
     </BrowserRouter>
   );

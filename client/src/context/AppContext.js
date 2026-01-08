@@ -7,7 +7,7 @@ const AppProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  
   useEffect(() => {
     async function load() {
       setLoading(true);
@@ -34,4 +34,4 @@ const AppProvider = ({ children }) => {
 };
 
 const useAppFeatures = () => useContext(AppContext);
-export { useAppFeatures, AppProvider,AppContext };
+export { useAppFeatures, AppProvider, AppContext };
