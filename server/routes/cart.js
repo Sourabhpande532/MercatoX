@@ -17,8 +17,6 @@ app.get("/", async (req, res) => {
     const carts = await getAllCartFromDb(userId);
     if (carts.length > 0) {
       res.status(200).json({ success: true, data: { carts } });
-    } else {
-      res.status(404).json({ success: false, message: "Cart not found." });
     }
   } catch (error) {
     console.error("Failed to get Carts", error.message);

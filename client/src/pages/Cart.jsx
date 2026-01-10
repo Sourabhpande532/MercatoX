@@ -2,8 +2,6 @@ import { useCart } from "../context/CartContext";
 
 const Cart = () => {
   const { cart } = useCart();
-  console.log(cart);
-
   return (
     <main className="container">
       <div className='row'>

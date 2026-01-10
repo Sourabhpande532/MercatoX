@@ -6,12 +6,6 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [alert, setAlert] = useState([]);
-  console.log(alert);
-
-  const pushAlert = (message) => {
-    setAlert((prev) => [...prev, message]);
-    setTimeout(() => setAlert((prev) => prev.slice(1)), 3500);
-  };
 
   const fetchCart = async () => {
     try {
@@ -22,6 +16,12 @@ const CartProvider = ({ children }) => {
     }
   };
 
+  function pushAlert(a) {
+    setAlert((prev) => [...prev, a]);
+    // FIFO(First In First out)
+    setTimeout(() => setAlert((prev) => prev.slice(1)), 5000);
+  }
+
   const addToCart = async (productId, qty = 1, size = "") => {
     try {
       const res = await API_URL.post("/cart", {
@@ -30,7 +30,7 @@ const CartProvider = ({ children }) => {
         size,
       });
       setCart(res.data.data.cart || []);
-      pushAlert({ type: "Success", text: "Add to cart" });
+      pushAlert({ type: "Success", text: "Added to cart" });
     } catch (error) {
       console.error(error);
       pushAlert({ type: "error", text: "Failed to add to cart" });
@@ -41,7 +41,7 @@ const CartProvider = ({ children }) => {
   }, []);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart, alert, setAlert }}>
       {children}
     </CartContext.Provider>
   );
