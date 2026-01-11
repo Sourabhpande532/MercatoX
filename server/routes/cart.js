@@ -80,4 +80,65 @@ app.post("/", async (req, res) => {
     });
   }
 });
+
+// UPDATE QTY
+app.post("/:id", async (req, res) => {
+  try {
+    const payload = req.body;
+
+    const { qty: updateQty,size } = payload;
+
+    if (!updateQty)
+      return res.json({ success: false, message: "qty is required" });
+
+    const item = await CartStore.findById(req.params.id);
+
+    if (!item)
+      return res.json({ success: false, message: "Cart item not found" });
+
+    item.qty = updateQty;
+    await item.save();
+
+    return res.json({
+      success: true,
+      message: "Cart item updated successfully",
+      data: { item },
+    });
+  } catch (error) {
+    console.error("Error Updating cart item:", error.message);
+    res.json({
+      success: false,
+      message: "Failed to update cart item",
+      error: error.message,
+    });
+  }
+});
+
+const deleteCartById = async (id) => {
+  try {
+    const cart = await CartStore.findByIdAndDelete(id);
+    return cart;
+  } catch (error) {
+    console.error("Delete cart error", error.message);
+  }
+};
+
+app.delete("/:id", async (req, res) => {
+  try {
+    const cart = await deleteCartById(req.params.id);
+    if (!cart)
+      return res
+        .status(404)
+        .json({ success: false, message: "Cart item not found" });
+    res.json({ success: true, message: "Cart deleted!", data: cart });
+  } catch (error) {
+    console.error("Error failed to delete cart", error.message);
+    res.json({
+      success: false,
+      message: "Failed to delete",
+      error: error.message,
+    });
+  }
+});
+
 module.exports = app;

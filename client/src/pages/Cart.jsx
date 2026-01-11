@@ -1,40 +1,89 @@
+import { useAppFeatures } from "../context/AppContext";
 import { useCart } from "../context/CartContext";
-
 const Cart = () => {
-  const { cart } = useCart();
+  const { cart, udpateCartQuantity, removeCart } = useCart();
+  const { loading } = useAppFeatures();
+  console.log(cart);
+
   return (
-    <main className="container">
-      <div className='row'>
-        {cart.length > 0 ? (
-          cart.map((p) => (
-            <div key={p._id} className='col-md-3'>
-              <div className='card h-100 py-3'>
-                <img src={p.product.images[0]} alt={p.product.title} className="img-fluid rounded-start" style={{height:200, objectFit:"cover"}} />
-                <div className='card-body'>
-                  <h3>{p.product.title}</h3>
-                  <p>${p.product.price}</p>
-                  <p>${p.product.discount}</p>
-                  <p>
-                    <b>Size:</b> {p.size}
-                  </p>
-                  <div className='d-flex gap-2'>
-                    <div>
-                      <button className="btn btn-outline-info btn-sm">-</button>
-                      <span className="px-2">{p.qty}</span>
-                      <button className="btn btn-outline-danger btn-sm">+</button>
+    <main className='container py-4'>
+      <div className='row g-4'>
+        {/*---- LEFT CART ITEMS ---- */}
+        <div className='col-lg-7 col-md-12'>
+          <h4 className='fw-bold mb-3'>🛒 My Cart</h4>
+          {!loading && cart.length === 0 && (
+            <div className='alert alert-danger text-center'>
+              <small className='fw-bold'>Your cart is empty!</small>
+            </div>
+          )}
+
+          {cart.map(({ _id, product, qty, size }) => (
+            <div
+              key={_id}
+              className='card border-0 shadow-lg p-3 mb-4 rounded-4'>
+              {!product ? (
+                <p className='text-danger'>Product Unavailable</p>
+              ) : (
+                <div className='row g-3 align-items-center'>
+                  <div className='col-12 col-sm-3'>
+                    <img
+                      src={product.images[0] || "http://placehold.co/150"}
+                      alt='placehold'
+                      className='img-fluid w-100 h-100 rounded-4'
+                    />
+                  </div>
+
+                  <div className='col-12 col-sm-9'>
+                    <div className='card-body'>
+                      <h3>{product.title}</h3>
+                      <p className='text-muted mb-1'>
+                        ₹{product.price}{" "}
+                        <span className='text-success'>
+                          {product.discount}% off
+                        </span>
+                      </p>
+                      <p className=''>
+                        <strong>Size:</strong>{" "}
+                        <span className='badge bg-dark'>{size}</span>
+                      </p>
+                      <div className='d-flex gap-2'>
+                        <div className='d-flex gap-2 align-items-center'>
+                          <button
+                            className='btn btn-outline-secondary'
+                            onClick={() =>
+                              udpateCartQuantity(_id, Math.max(1, qty - 1))
+                            }>
+                            -
+                          </button>
+                          {qty}
+                          <button
+                            className='btn btn-outline-secondary'
+                            onClick={() => udpateCartQuantity(_id, qty + 1)}>
+                            +
+                          </button>
+                        </div>
+                        <button
+                          className='btn btn-outline-danger'
+                          onClick={() => removeCart(_id)}>
+                          Remove
+                        </button>
+                        <button className='btn btn-outline-primary btn-responsive'>
+                          Move To Wishlist
+                        </button>
+                      </div>
                     </div>
-                    <button className="btn btn-outline-primary">Remove</button>
-                    <button className="btn btn-outline-secondary">Add To wishlist</button>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
-          ))
-        ) : (
-          <p>Cart NOT found.</p>
-        )}
-        <div className="col-md-9">
-        <h3>Card Details</h3>
+          ))}
+          {/* ---------------- RIGHT PRICE DETAILS ---------------- */}
+          {/*
+           */}
+        </div>
+        {/* ---- RIGHT PRICE DETAILS ---- */}
+        <div className='col-lg-5 col-md-6 col-12'>
+          <h2>Price Details</h2>
         </div>
       </div>
     </main>
