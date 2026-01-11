@@ -38,6 +38,12 @@ const CartProvider = ({ children }) => {
   };
 
   const udpateCartQuantity = async (cartId, userUpdateQty) => {
+    const prevCart = cart;
+    setCart((prev) =>
+      prev.map((item) =>
+        item._id === cartId ? { ...item, qty: userUpdateQty } : item
+      )
+    );
     try {
       const response = await fetch(`http://localhost:5000/api/cart/${cartId}`, {
         method: "POST",
@@ -52,10 +58,11 @@ const CartProvider = ({ children }) => {
       if (!response.ok) {
         throw new Error(data.message || "Failed to update cart");
       }
-      await fetchCart();
+      // await fetchCart();
       pushAlert({ type: "info", text: "Updated Successfully" });
     } catch (error) {
       console.error("Update cart failed", error.message);
+      setCart(prevCart);
       pushAlert({ type: "error", text: "Failed to udpate cart" });
     }
   };
