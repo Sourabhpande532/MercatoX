@@ -85,20 +85,14 @@ app.post("/", async (req, res) => {
 app.post("/:id", async (req, res) => {
   try {
     const payload = req.body;
-
-    const { qty: updateQty,size } = payload;
-
+    const { qty: updateQty, size } = payload;
     if (!updateQty)
       return res.json({ success: false, message: "qty is required" });
-
     const item = await CartStore.findById(req.params.id);
-
     if (!item)
       return res.json({ success: false, message: "Cart item not found" });
-
     item.qty = updateQty;
     await item.save();
-
     return res.json({
       success: true,
       message: "Cart item updated successfully",

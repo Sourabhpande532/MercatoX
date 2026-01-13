@@ -11,6 +11,7 @@ import { useAppFeatures } from "./context/AppContext";
 import { Loading } from "./component/loading/Loading";
 import { Alerts } from "./component/alerts/Alerts";
 import { useCart } from "./context/CartContext";
+import { Wishlist } from "./pages/Wishlist";
 function App() {
   const { loading } = useAppFeatures();
   const { alert, setAlert } = useCart();
@@ -26,6 +27,7 @@ function App() {
           <Route path='/products' element={<ProductListing />} />
           <Route path='/products/:id' element={<ProductDetails />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/wishlist' element={<Wishlist />} />
         </Routes>
       )}
 

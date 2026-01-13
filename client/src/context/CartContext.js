@@ -12,7 +12,7 @@ const CartProvider = ({ children }) => {
       const response = await API_URL.get("/cart");
       setCart(response.data?.data?.carts || []);
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
     }
   };
 
