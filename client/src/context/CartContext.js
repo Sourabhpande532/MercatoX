@@ -39,6 +39,7 @@ const CartProvider = ({ children }) => {
 
   const udpateCartQuantity = async (cartId, userUpdateQty) => {
     const prevCart = cart;
+    // Optimistick UI update
     setCart((prev) =>
       prev.map((item) =>
         item._id === cartId ? { ...item, qty: userUpdateQty } : item
@@ -87,7 +88,7 @@ const CartProvider = ({ children }) => {
       fetchCart();
     }
   };
-
+  
   useEffect(() => {
     fetchCart();
   }, []);
