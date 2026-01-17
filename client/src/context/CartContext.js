@@ -42,8 +42,8 @@ const CartProvider = ({ children }) => {
     // Optimistick UI update
     setCart((prev) =>
       prev.map((item) =>
-        item._id === cartId ? { ...item, qty: userUpdateQty } : item
-      )
+        item._id === cartId ? { ...item, qty: userUpdateQty } : item,
+      ),
     );
     try {
       const response = await fetch(`http://localhost:5000/api/cart/${cartId}`, {
@@ -88,7 +88,7 @@ const CartProvider = ({ children }) => {
       fetchCart();
     }
   };
-  
+
   useEffect(() => {
     fetchCart();
   }, []);
@@ -105,6 +105,7 @@ const CartProvider = ({ children }) => {
         addToCart,
         alert,
         setAlert,
+        pushAlert,
         udpateCartQuantity,
         removeCart,
       }}>

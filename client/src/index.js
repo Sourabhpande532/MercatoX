@@ -8,13 +8,13 @@ import { WishlistProvider } from "./context/WishlistContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <WishlistProvider>
-    <CartProvider>
+  <CartProvider>
+    <WishlistProvider>
       <AppProvider>
         <App />
       </AppProvider>
-    </CartProvider>
-  </WishlistProvider>
+    </WishlistProvider>
+  </CartProvider>,
 );
 
 // If you want to start measuring performance in your app, pass a function
