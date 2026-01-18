@@ -12,6 +12,7 @@ import { Loading } from "./component/loading/Loading";
 import { Alerts } from "./component/alerts/Alerts";
 import { useCart } from "./context/CartContext";
 import { Wishlist } from "./pages/Wishlist";
+import { Checkout } from "./pages/Checkout";
 function App() {
   const { loading } = useAppFeatures();
   const { alert, setAlert } = useCart();
@@ -28,6 +29,7 @@ function App() {
           <Route path='/products/:id' element={<ProductDetails />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/wishlist' element={<Wishlist />} />
+          <Route path='/checkout' element={<Checkout />} />
         </Routes>
       )}
 
