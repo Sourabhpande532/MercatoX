@@ -34,13 +34,6 @@ exports.createAddress = async (req, res) => {
     if (!name || !phone) {
       return res.json({ success: false, message: "Missing required fields." });
     }
-    const isAddress = await Address.findOne({ name });
-    if (isAddress) {
-      const address = await Address.find({ userId });
-      return res
-        .status(200)
-        .json({ message: "Address Already Exits", success: true, address });
-    }
     await createUserAddress({ ...payload, userId });
     const address = await Address.find({ userId });
     return res.status(200).json({

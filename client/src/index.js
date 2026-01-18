@@ -9,15 +9,15 @@ import { AddressProvider } from "./context/AddressContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <AddressProvider>
-    <CartProvider>
+  <CartProvider>
+    <AddressProvider>
       <WishlistProvider>
         <AppProvider>
           <App />
         </AppProvider>
       </WishlistProvider>
-    </CartProvider>
-  </AddressProvider>,
+    </AddressProvider>
+  </CartProvider>,
 );
 
 // If you want to start measuring performance in your app, pass a function
