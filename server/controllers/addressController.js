@@ -4,7 +4,7 @@ exports.getUserAddress = async (req, res) => {
   try {
     const userId = req.query.userId || "default";
     const address = await Address.find({ userId });
-    if (address.length != 0) {
+    if (address.length !== 0) {
       res.status(200).json({
         success: true,
         message: "Fetch Addressed successfully",
