@@ -2,16 +2,28 @@ import { useParams } from "react-router-dom";
 import { useAppFeatures } from "../../context/AppContext";
 import API_URL from "../../api/axios";
 import { useEffect, useState } from "react";
+import { PopupMessage } from "../popup/PopumMessage";
+import { useCart } from "../../context/CartContext";
 
 const ProductDetails = () => {
   const { products } = useAppFeatures();
   const { id } = useParams();
+  const { addToCart } = useCart();
   const [product, setProduct] = useState([]);
+  const [popup, setPopup] = useState({ show: false, message: "" });
+  const showPopup = (message) => setPopup({ show: true, message: message });
+  const closePopup = () => setPopup({ show: false, message: "" });
+
   console.log(product);
 
   const filterProduct = products.filter((each) =>
-    each?.category?._id.includes(product.category?._id)
+    each?.category?._id.includes(product.category?._id),
   );
+  const handleAddToCart = () => {
+    showPopup("Please select a size");
+    // return;
+    addToCart(id);
+  };
   useEffect(() => {
     async function fetchProductData() {
       const productResponse = await API_URL.get(`/products/${id}`);
@@ -27,6 +39,11 @@ const ProductDetails = () => {
 
   return (
     <div className='container py-4'>
+      <PopupMessage
+        show={popup.show}
+        message={popup.message}
+        onClose={closePopup}
+      />
       <div className='row'>
         <div className='col-md-6'>
           <div className=''>
@@ -78,7 +95,11 @@ const ProductDetails = () => {
           </div>
 
           <div className='d-flex mt-4'>
-            <button className='btn btn-primary btn-lg me-3'>Add to Cart</button>
+            <button
+              className='btn btn-primary btn-lg me-3'
+              onClick={handleAddToCart}>
+              Add to Cart
+            </button>
             <button className='btn btn-outline-danger btn-lg'>
               ♥️ Wishlist
             </button>
@@ -119,7 +140,7 @@ const ProductDetails = () => {
           {product.description
             ?.split(".")
             .map((line, idx) =>
-              line.trim() ? <li key={idx}>{line.trim()}</li> : null
+              line.trim() ? <li key={idx}>{line.trim()}</li> : null,
             )}
         </ul>
       </div>
