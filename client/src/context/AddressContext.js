@@ -7,7 +7,6 @@ const AddressContext = createContext();
 const AddressProvider = ({ children }) => {
   const [address, setAddress] = useState([]);
   const { pushAlert } = useCart();
-  console.log(address);
 
   const fetchAddress = async () => {
     try {
@@ -42,11 +41,10 @@ const AddressProvider = ({ children }) => {
 
   useEffect(() => {
     fetchAddress();
-    // addAddress({ name: "sitaram", street: "gu", phone: "98989989809" });
   }, []);
 
   return (
-    <AddressContext.Provider value={{ address,addAddress }}>
+    <AddressContext.Provider value={{ address, addAddress }}>
       {children}
     </AddressContext.Provider>
   );

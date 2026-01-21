@@ -10,7 +10,7 @@ const Profile = () => {
     zip: "",
     phone: "",
   });
-  const { addAddress } = useAddress();
+  const { addAddress, address } = useAddress();
   const handleSubmit = async (e) => {
     e.preventDefault();
     await addAddress(form);
@@ -18,6 +18,24 @@ const Profile = () => {
   };
   return (
     <div>
+      <div className='card shadow-sm p-3'>
+        <h2 className='border-bottom'>Saved address</h2>
+        {address.map((each) => (
+          <div key={each._id}>
+            <h5>
+              {each.name}({each.phone})
+            </h5>
+            <p className='fw-light'>
+              {each.street}-{each.city},{each.city},{each.state},{each.zip}
+            </p>
+            <button className='btn btn-outline-secondary ms-2'>Edit</button>
+            <small className='px-2'></small>
+            <button className='btn btn-outline-danger'>Delete</button>
+            <hr />
+          </div>
+        ))}
+      </div>
+      <br />
       <div className='card shadow-sm p-3 mt-3 mb-4'>
         <h5 className='border-bottom pb-3'>Add Address</h5>
         <form onSubmit={handleSubmit} className='mt-3'>

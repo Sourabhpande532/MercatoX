@@ -13,6 +13,7 @@ import { Alerts } from "./component/alerts/Alerts";
 import { useCart } from "./context/CartContext";
 import { Wishlist } from "./pages/Wishlist";
 import { Checkout } from "./pages/Checkout";
+import { Profile } from "./pages/Profile";
 function App() {
   const { loading } = useAppFeatures();
   const { alert, setAlert } = useCart();
@@ -30,9 +31,9 @@ function App() {
           <Route path='/cart' element={<Cart />} />
           <Route path='/wishlist' element={<Wishlist />} />
           <Route path='/checkout' element={<Checkout />} />
+          <Route path='/profile' element={<Profile />} />
         </Routes>
       )}
-
       <Footer />
     </BrowserRouter>
   );

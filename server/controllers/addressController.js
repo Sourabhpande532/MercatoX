@@ -50,3 +50,49 @@ exports.createAddress = async (req, res) => {
     });
   }
 };
+
+exports.updateAddress = async (req, res) => {
+  try {
+    const address = await Address.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!address)
+      return res
+        .status(404)
+        .json({ success: false, message: "Address not found." });
+    return res.status(200).json({
+      success: true,
+      message: "Address updated successfully",
+      data: { address },
+    });
+  } catch (error) {
+    console.error("Error updating address:", error.message);
+    return res
+      .status(500)
+      .json({ success: false, message: "Failed to update address!" });
+  }
+};
+
+exports.deleteAddress = async (req, res) => {
+  try {
+    const address = await Address.findByIdAndDelete(req.params.id);
+    if (!address) {
+      return res.status({
+        success: false,
+        message: "Address not found",
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      message: "Address deleted successful",
+      data: { address },
+    });
+  } catch (error) {
+    console.error("Failed to delete address error:", error.message);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to delete address",
+      error: error.message,
+    });
+  }
+};
