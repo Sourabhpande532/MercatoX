@@ -39,12 +39,42 @@ const AddressProvider = ({ children }) => {
     }
   };
 
+  const updateAddress = async (id, dataToUpdate) => {
+    try {
+      const response = await fetch(`${url}/address/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dataToUpdate),
+      });
+      fetchAddress();
+      pushAlert({ type: "info", text: "Address updated" });
+    } catch (error) {
+      console.error("Failed to update address", error.message);
+      pushAlert({ type: "error", text: "Failed to update cart" });
+    }
+  };
+
+  const deleteAddress = async (id) => {
+    try {
+      await fetch(`${url}/address/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+      await fetchAddress();
+      pushAlert({ type: "warning", text: "Address deleted" });
+    } catch (error) {
+      console.error("Error deleting address:", error.message);
+      pushAlert({ type: "error", text: "Failed to delete address" });
+    }
+  };
+
   useEffect(() => {
     fetchAddress();
   }, []);
 
   return (
-    <AddressContext.Provider value={{ address, addAddress }}>
+    <AddressContext.Provider
+      value={{ address, addAddress, deleteAddress, updateAddress }}>
       {children}
     </AddressContext.Provider>
   );
