@@ -17,6 +17,7 @@ app.use("/api/products", require("./routes/product"));
 app.use("/api/cart", require("./routes/cart"));
 app.use("/api/wishlist", require("./routes/wishlist"));
 app.use("/api/address", require("./routes/address"));
+app.use("/api/orders", require("./routes/order"));
 
 app.get("/", (req, res) => {
   res.send("Hello, Welcome express routes");
