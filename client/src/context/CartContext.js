@@ -104,6 +104,7 @@ const CartProvider = ({ children }) => {
         cart,
         addToCart,
         alert,
+        fetchCart,
         setAlert,
         pushAlert,
         udpateCartQuantity,
