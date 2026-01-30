@@ -8,7 +8,7 @@ const OrderSchema = new mongoose.Schema({
     },
   ],
   total: Number,
-  address: Object,
+  address: { type: mongoose.Schema.Types.ObjectId, ref: "ShoppingAddress" },
   createdAt: { type: Date, dafault: Date.now },
 });
 module.exports = mongoose.model("ShoppingOrder", OrderSchema);

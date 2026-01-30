@@ -4,7 +4,7 @@ const CartStore = require("../model/CartItem");
 exports.obtainedOrders = async (req, res) => {
   try {
     const userId = req.query.userId || "default";
-    const orders = await Order.find({ userId }).populate("items.product");
+    const orders = await Order.find({ userId }).populate("items.product").populate('address');
     return res.status(200).json({
       success: true,
       message: "Orders fetched successfully",

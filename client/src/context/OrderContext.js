@@ -14,7 +14,7 @@ const OrderProvider = ({ children }) => {
 
   const fetchOrder = async () => {
     try {
-      const response = await apiGet(`${url}/orders?userId=101`);
+      const response = await apiGet(`${url}/orders`);
       setOrder(response.orders);
     } catch (error) {
       console.error(error.message);
